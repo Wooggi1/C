@@ -44,7 +44,7 @@ int main() {
         char *token = strtok(linha, ",");
         strcpy(nome, token);
 
-        //Continua separando até o strtok retornar NULL, ou seja, chegou ao final da linn
+        //Continua separando até o strtok retornar NULL, ou seja, chegou ao final da linha
         while ((token = strtok(NULL, ",")) != NULL) {
             notas[numNotas++] = atof(token);
         }
