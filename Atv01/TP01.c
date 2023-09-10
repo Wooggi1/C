@@ -28,7 +28,7 @@ int main() {
     FILE *saida = fopen("SituacaoFinal.csv", "w");
 
     if (entrada == NULL || saida == NULL) {
-        perror("Erro ao abrir os arquivos");
+        printf("Erro ao abrir os arquivos");
         exit(1);
     }
 
