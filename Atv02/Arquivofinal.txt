@@ -5,4 +5,4 @@ array ordenado: abacate, abacaxi, amora, banana, caqui, cereja,
 				maca, manga, melancia, morango, papaya, pera, pêssego, uva
 Trocas: 49
 Comparacoes: 169
-mediana do array: laranja
+Mediana do array: laranja

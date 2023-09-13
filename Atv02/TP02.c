@@ -78,24 +78,26 @@ int main() {
     printarArray(arr, tamanhoArray);
     printf("mediana do array: %s\n", arr[tamanhoArray/2]);
     
-
+    //Cria o arquivo final imprime o array ordenado nele
     fprintf(arquivo, "\t\tARQUIVO FINAL\n\n");
     fprintf(arquivo, "array ordenado: ");
     for (int i = 0; i < tamanhoArray; i++){
         comparacoes += 2;
+        //Remove a virgula do ultimo elemento do array
         if (i == tamanhoArray - 1){
             comparacoes -= 1;
             fprintf(arquivo, "%s", arr[i]); 
             break;
         }
+        //Insere uma quebra de linha a cada 6 elementos
         if (i == 6 || i == 12)
             fprintf(arquivo, "\n\t\t\t\t");
         fprintf(arquivo, "%s, ", arr[i]);
     }
-    
+        
         fprintf(arquivo, "\nTrocas: %d\n", trocas);
         fprintf(arquivo, "Comparacoes: %d\n", comparacoes);
-        fprintf(arquivo, "mediana do array: %s\n", arr[tamanhoArray/2]);
+        fprintf(arquivo, "Mediana do array: %s\n", arr[tamanhoArray/2]);
     
 
     fclose(arquivo);
