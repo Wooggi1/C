@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <windows.h>
 
 //Se você me plagiar denovo henrique eu juro que te mato
 //Autoria de Thiago da Silva
@@ -29,20 +28,25 @@ int particionar(char *arr[], int inicio, int fim) {
     swap(&arr[i + 1], &arr[fim]);
     return (i + 1);
 }
+
+void quicksort(char *arr[], int inicio, int fim) {
+    if (inicio < fim) {
+        //Recebe o indice do pivo
+        int pivo = particionar(arr, inicio, fim);
+
+        //Ordena elementos antes do pivo
+        quicksort(arr, inicio, pivo - 1);
+        //Ordena elementos depois do pivo
+        quicksort(arr, pivo + 1, fim);
+    }
+}
 int main() {
     
-    char *arrayTeste[] = {"Teste", "String"};
-    LARGE_INTEGER frequency;
-    LARGE_INTEGER t1, t2;
-    double tempo;
+    char *arrayTeste[] = {"Teste", "String", "ai_pai_para", "modoSexo"};
+    
 
-    QueryPerformanceFrequency(&frequency);
-    QueryPerformanceCounter(&t1);
-    particionar(arrayTeste, 0, 1);
-    QueryPerformanceCounter(&t2);
-
-    tempo = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
-    printf("Tempo: %fms \n", tempo);
+    quicksort(arrayTeste, 0, 3);
+    
     
     return 0;
 }
