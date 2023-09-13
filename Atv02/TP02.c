@@ -48,6 +48,15 @@ void quicksort(char *arr[], int inicio, int fim) {
     }
 }
 
+//Função pra printar array aplicando o princípio DRY
+void printarArray(char *arr[], int tamanho){
+    for (int i = 0; i < tamanho; i++){
+        if (i == 6 || i == 12)
+            printf("\n");
+        printf("%s, ", arr[i]);
+    }
+}
+
 int main() {
     
     char *arr[20] = {
@@ -57,23 +66,17 @@ int main() {
         "amora", "caqui", "figo", "papaya"
     };
     int tamanhoArray = sizeof(arr) / sizeof(arr[0]);
+    FILE *arquivo;
     
     printf("Array antes\n");
-    for (int i = 0; i < tamanhoArray; i++){
-        if (i == 6 || i == 12)
-            printf("\n");
-        printf("%s, ", arr[i]);
-    }
-    
+    printarArray(arr, tamanhoArray);
     quicksort(arr, 0, tamanhoArray - 1);
     printf("\nArray depois\n");
-    for (int i = 0; i < tamanhoArray; i++){
-        if (i == 6 || i == 12)
-            printf("\n");
-        printf("%s ", arr[i]);
-    }
+    printarArray(arr, tamanhoArray);
 
     printf("\nTrocas: %d\n", trocas);
     printf("Comparacoes: %d\n", comparacoes);
+
+
     return 0;
 }
