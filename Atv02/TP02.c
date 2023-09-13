@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-//Se você me plagiar denovo henrique eu juro que te mato
 //Autoria de Thiago da Silva
 
 //Contadores de trocas e comparações
@@ -51,6 +50,12 @@ void quicksort(char *arr[], int inicio, int fim) {
 //Função pra printar array aplicando o princípio DRY
 void printarArray(char *arr[], int tamanho){
     for (int i = 0; i < tamanho; i++){
+        comparacoes += 2;
+        if (i == tamanho - 1){
+            comparacoes -= 1;
+            printf("%s", arr[i]); 
+            break;
+        } 
         if (i == 6 || i == 12)
             printf("\n");
         printf("%s, ", arr[i]);
@@ -66,17 +71,34 @@ int main() {
         "amora", "caqui", "figo", "papaya"
     };
     int tamanhoArray = sizeof(arr) / sizeof(arr[0]);
-    FILE *arquivo;
+    FILE *arquivo = fopen("Arquivofinal.txt", "w");
     
-    printf("Array antes\n");
-    printarArray(arr, tamanhoArray);
     quicksort(arr, 0, tamanhoArray - 1);
-    printf("\nArray depois\n");
+    printf("\nArray ordenado\n");
     printarArray(arr, tamanhoArray);
+    printf("mediana do array: %s\n", arr[tamanhoArray/2]);
+    
 
-    printf("\nTrocas: %d\n", trocas);
-    printf("Comparacoes: %d\n", comparacoes);
+    fprintf(arquivo, "\t\tARQUIVO FINAL\n\n");
+    fprintf(arquivo, "array ordenado: ");
+    for (int i = 0; i < tamanhoArray; i++){
+        comparacoes += 2;
+        if (i == tamanhoArray - 1){
+            comparacoes -= 1;
+            fprintf(arquivo, "%s", arr[i]); 
+            break;
+        }
+        if (i == 6 || i == 12)
+            fprintf(arquivo, "\n\t\t\t\t");
+        fprintf(arquivo, "%s, ", arr[i]);
+    }
+    
+        fprintf(arquivo, "\nTrocas: %d\n", trocas);
+        fprintf(arquivo, "Comparacoes: %d\n", comparacoes);
+        fprintf(arquivo, "mediana do array: %s\n", arr[tamanhoArray/2]);
+    
 
+    fclose(arquivo);
 
     return 0;
 }
