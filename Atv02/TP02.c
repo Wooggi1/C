@@ -5,11 +5,16 @@
 //Se você me plagiar denovo henrique eu juro que te mato
 //Autoria de Thiago da Silva
 
+//Contadores de trocas e comparações
+int trocas = 0;
+int comparacoes = 0;
+
 //troca de valor entre varíaveis utilizando ponteiros para strings
 void swap (char **a, char **b){
     char *temp = *a;
     *a = *b;
     *b = temp;
+    trocas++;
 }
 
 //Joga os elementos menores para a esquerda do pivo e os maiores a direita
@@ -18,6 +23,7 @@ int particionar(char *arr[], int inicio, int fim) {
     int i = (inicio - 1);
 
     for (int j = inicio; j <= fim - 1; j++){
+        comparacoes++;
         if (strcmp(arr[j], pivo) <= 0){
             i++;
             swap(&arr[i], &arr[j]);
@@ -30,6 +36,7 @@ int particionar(char *arr[], int inicio, int fim) {
 }
 
 void quicksort(char *arr[], int inicio, int fim) {
+    comparacoes++;
     if (inicio < fim) {
         //Recebe o indice do pivo
         int pivo = particionar(arr, inicio, fim);
@@ -40,13 +47,29 @@ void quicksort(char *arr[], int inicio, int fim) {
         quicksort(arr, pivo + 1, fim);
     }
 }
+
 int main() {
     
-    char *arrayTeste[] = {"Teste", "String", "ai_pai_para", "modoSexo"};
+    char *arr[20] = {
+        "maca", "banana", "pera", "uva", "laranja", "abacaxi", 
+        "limão", "manga", "abacate", "kiwi", "cereja",
+        "morango", "pêssego", "goiaba", "melancia", "framboesa",
+        "amora", "caqui", "figo", "papaya"
+    };
+    int tamanhoArray = sizeof(arr) / sizeof(arr[0]);
     
+    printf("Array antes\n");
+    for (int i = 0; i < tamanhoArray; i++){
+        puts(arr[i]);
+    }
+    
+    quicksort(arr, 0, tamanhoArray - 1);
+    printf("\nArray depois\n");
+    for (int i = 0; i < tamanhoArray; i++){
+        puts(arr[i]);
+    }
 
-    quicksort(arrayTeste, 0, 3);
-    
-    
+    printf("Trocas: %d\n", trocas);
+    printf("Comparacoes: %d\n", comparacoes);
     return 0;
 }
