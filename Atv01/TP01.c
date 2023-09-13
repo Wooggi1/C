@@ -5,6 +5,7 @@
 #define MAX_NOME 100
 #define NUM_NOTAS 2
 
+//Versão original do trabalho
 //Função feita para calcular a média do aluno
 float calcularMedia(float notas[], int numNotas) {
     float soma = 0.0;

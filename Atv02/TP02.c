@@ -60,16 +60,20 @@ int main() {
     
     printf("Array antes\n");
     for (int i = 0; i < tamanhoArray; i++){
-        puts(arr[i]);
+        if (i == 6 || i == 12)
+            printf("\n");
+        printf("%s, ", arr[i]);
     }
     
     quicksort(arr, 0, tamanhoArray - 1);
     printf("\nArray depois\n");
     for (int i = 0; i < tamanhoArray; i++){
-        puts(arr[i]);
+        if (i == 6 || i == 12)
+            printf("\n");
+        printf("%s ", arr[i]);
     }
 
-    printf("Trocas: %d\n", trocas);
+    printf("\nTrocas: %d\n", trocas);
     printf("Comparacoes: %d\n", comparacoes);
     return 0;
 }
