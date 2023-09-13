@@ -5,4 +5,4 @@ CÓPIA/PLÁGIO NÃO AUTORIZADO</h1>
 <br>
 
 # BlackList
-- Henrique Serafin
+- Henrique
