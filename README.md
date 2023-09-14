@@ -6,3 +6,6 @@ CÓPIA/PLÁGIO NÃO AUTORIZADO</h1>
 
 # BlackList
 - Henrique
+- Leozin
+- Daniel calvão
+  
